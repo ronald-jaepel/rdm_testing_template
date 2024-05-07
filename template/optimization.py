@@ -13,10 +13,6 @@ DEFAULT_OPTIONS = Options({
 })
 
 
-def objective_function(x):
-    return (x[0] - 1) ** 2 + (x[1] + 1) ** 2 + np.sin(x[0] * 10) * 2 + np.sin(x[1] * 5)
-
-
 def setup_optimization_problem(user_options):
     options = DEFAULT_OPTIONS.copy()
     if user_options is not None:
@@ -50,7 +46,9 @@ def setup_optimization_problem(user_options):
         name="nonlinear_constraint"
     )
 
-    optimization_problem.add_objective(objective_function)
+    optimization_problem.add_objective(
+        lambda x: (x[0] - 1) ** 2 + (x[1] + 1) ** 2 + np.sin(x[0] * 10) * 2 + np.sin(x[1] * 5)
+    )
 
     return optimization_problem
 
