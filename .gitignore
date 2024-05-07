@@ -1,0 +1,17 @@
+.idea
+*diskcache*
+*tmp*
+.ipynb_checkpoints
+__pycache__
+*.ipynb
+output
+output_cached
+/output/
+.idea
+*diskcache*
+*tmp*
+.ipynb_checkpoints
+__pycache__
+*.ipynb
+/output/
+/output_cached/

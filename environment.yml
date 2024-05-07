@@ -1,0 +1,11 @@
+name: rdm_example
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - conda
+  - cadet
+  - pip
+  - pip:
+      - cadet-process>=0.9.0
+      - cadet-rdm
