@@ -1,4 +1,9 @@
+import sys
+from pathlib import Path
+
 import click
+
+sys.path.append(Path(".").as_posix())
 
 from template import main
 
