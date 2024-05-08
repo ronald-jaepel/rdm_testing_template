@@ -1,9 +1,10 @@
+import os
 import sys
 from pathlib import Path
 
 import click
 
-sys.path.append(Path(".").as_posix())
+sys.path.append(Path(os.path.abspath(__file__)).parent.parent.as_posix())
 
 from template import main
 
