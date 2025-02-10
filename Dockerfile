@@ -5,10 +5,9 @@
 # https://docs.docker.com/go/dockerfile-reference/
 
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
-ARG REPO_PATH
 
-ARG CONDA_VERSION=25.1.1
-FROM continuumio/miniconda3:${CONDA_VERSION}-0 AS base
+ARG CONDA_VERSION=24.11.3
+FROM condaforge/miniforge3:${CONDA_VERSION}-0 AS base
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -24,11 +23,13 @@ USER root
 RUN apt-get update && apt-get install -y git git-lfs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#USER $MAMBA_USER
+ARG CONDA_USER=conda_user
+
+RUN adduser $CONDA_USER
+
+USER $CONDA_USER
 
 COPY environment.yml /tmp/environment.yml
 
 RUN conda env update --file /tmp/environment.yml && \
     conda clean --all --yes
-
-#WORKDIR /tmp/repo
