@@ -6,7 +6,7 @@ import click
 
 sys.path.append(Path(os.path.abspath(__file__)).parent.parent.as_posix())
 
-from template import main
+from main import main
 
 
 @click.command()

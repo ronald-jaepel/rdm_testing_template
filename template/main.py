@@ -1,7 +1,9 @@
+import sys
+
 from cadetrdm import Options
 from cadetrdm.wrapper import tracks_results
 
-from template import setup_optimization_problem, setup_optimizer
+from optimization import setup_optimization_problem, setup_optimizer
 
 
 @tracks_results
@@ -33,14 +35,19 @@ def main(repo, options):
 
 
 if __name__ == '__main__':
-    options = Options()
-    options.debug = True
-    options.push = False
-    options.commit_message = 'Trying out new things'
-    options.optimizer_options = {
-        "optimizer": "U_NSGA3",
-        "pop_size": 20,
-        "n_cores": 10,
-        "n_max_gen": 3,
-    }
+    print(sys.argv)
+    if len(sys.argv) > 1:
+        options = Options.load_json_file(sys.argv[1])
+        print(options)
+    else:
+        options = Options()
+        options.debug = True
+        options.push = False
+        options.commit_message = 'Trying out new things'
+        options.optimizer_options = {
+            "optimizer": "U_NSGA3",
+            "pop_size": 4,
+            "n_cores": 4,
+            "n_max_gen": 2,
+        }
     main(options)
