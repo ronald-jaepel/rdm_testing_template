@@ -35,7 +35,6 @@ COPY environment.yml /tmp/environment.yml
 
 RUN conda env update -n base --file /tmp/environment.yml
 
-RUN conda install -y 'cadet=4.3.0'
-RUN pip install 'cadet-process>=0.10.0'
+RUN pip install git+https://github.com/cadet/CADET-RDM.git@master
 RUN chown -R $CONDA_USER:$CONDA_USER /app
 USER $CONDA_USER
