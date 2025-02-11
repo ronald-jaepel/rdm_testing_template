@@ -35,6 +35,6 @@ COPY environment.yml /tmp/environment.yml
 
 RUN conda env update -n base --file /tmp/environment.yml
 
-RUN pip install git+https://github.com/cadet/CADET-RDM.git@master
-RUN chown -R $CONDA_USER:$CONDA_USER /app
-USER $CONDA_USER
+RUN pip install --force-reinstall --no-deps git+https://github.com/cadet/CADET-RDM.git@291cb4016915afd29cf4f12bc00877d9edb7040c
+#RUN chown -R $CONDA_USER:$CONDA_USER /app
+#USER $CONDA_USER
